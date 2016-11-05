@@ -11,20 +11,18 @@ import java.io.Serializable;
 public class Vehicle implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private int id;
+
     private String makeModel;
     private int year;
     private double retailPrice;
 
     public Vehicle() {
-        makeModel = "EMPTY";
-        year = 0;
-        retailPrice = 0;
+        this("EMPTY", 0, 0);
     }
 
-    public Vehicle(int id, String makeModel, int year, double retailPrice) {
-        this.id = id;
+    public Vehicle(String makeModel, int year, double retailPrice) {
         this.makeModel = makeModel;
         this.year = year;
         this.retailPrice = retailPrice;
@@ -39,6 +37,10 @@ public class Vehicle implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMakeModel() {
